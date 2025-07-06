@@ -1,0 +1,31 @@
+# Example Memory/Custom Instructions
+
+## About Me
+- I'm a software developer interested in AI and machine learning
+- I prefer concise, technical explanations
+- I work primarily with Python, JavaScript, and Swift
+- I'm building applications that integrate AI capabilities
+
+## My Preferences
+- Show me code examples when explaining concepts
+- I prefer functional programming patterns when possible
+- Include type hints in Python code
+- Focus on performance and best practices
+
+## Current Projects
+- Building a web application with React and Next.js
+- Working on a Python-based data pipeline
+- Exploring OpenWebUI for team collaboration
+- Implementing RAG systems for document analysis
+
+## Communication Style
+- Be direct and technical
+- Skip lengthy introductions
+- Provide actionable insights
+- Include relevant documentation links when helpful
+
+## Technical Environment
+- macOS development environment
+- VS Code as primary editor
+- Docker for containerization
+- Git for version control
