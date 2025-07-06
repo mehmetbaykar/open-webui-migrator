@@ -1,0 +1,222 @@
+[
+  {
+    "title": "Example Chat with Image",
+    "conversation_id": "example-001-image-chat",
+    "create_time": 1704067200.0,
+    "update_time": 1704067500.0,
+    "current_node": "msg-assistant-2",
+    "default_model_slug": "gpt-4o",
+    "mapping": {
+      "root": {
+        "id": "root",
+        "message": null,
+        "parent": null,
+        "children": ["msg-user-1"]
+      },
+      "msg-user-1": {
+        "id": "msg-user-1",
+        "message": {
+          "id": "msg-user-1",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1704067200.0,
+          "content": {
+            "content_type": "multimodal_text",
+            "parts": [
+              "Can you analyze this screenshot and tell me what UI components you see?",
+              {
+                "content_type": "image_asset_pointer",
+                "asset_pointer": "file-service://file-hNqujbexOLo2oIkoPfhRL7FS"
+              }
+            ]
+          },
+          "metadata": {
+            "attachments": [
+              {
+                "id": "file-hNqujbexOLo2oIkoPfhRL7FS",
+                "size": 3350703,
+                "name": "image.png",
+                "mime_type": "image/png",
+                "width": 2048,
+                "height": 944
+              }
+            ]
+          }
+        },
+        "parent": "root",
+        "children": ["msg-assistant-1"]
+      },
+      "msg-assistant-1": {
+        "id": "msg-assistant-1",
+        "message": {
+          "id": "msg-assistant-1",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1704067220.0,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Looking at this screenshot, I can see several UI components:\n\n1. **Navigation Bar**: A dark navigation bar at the top with what appears to be app navigation elements\n2. **Game View**: The main content area showing what looks like a game interface\n3. **Background**: A colored background (appears to be using a specific color theme)\n4. **Status Elements**: Various status indicators and game elements\n\nThe interface appears to be from a mobile application or game with a clean, modern design. The color scheme seems to use contrasting colors for better visibility of game elements."
+            ]
+          },
+          "metadata": {
+            "model_slug": "gpt-4o"
+          }
+        },
+        "parent": "msg-user-1",
+        "children": ["msg-user-2"]
+      },
+      "msg-user-2": {
+        "id": "msg-user-2",
+        "message": {
+          "id": "msg-user-2",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1704067300.0,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "How would you implement a similar background color animation in SwiftUI?"
+            ]
+          }
+        },
+        "parent": "msg-assistant-1",
+        "children": ["msg-assistant-2"]
+      },
+      "msg-assistant-2": {
+        "id": "msg-assistant-2",
+        "message": {
+          "id": "msg-assistant-2",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1704067320.0,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Here's how you can implement a background color animation in SwiftUI:\n\n```swift\nimport SwiftUI\n\nstruct AnimatedBackgroundView: View {\n    @State private var animateGradient = false\n    \n    var body: some View {\n        LinearGradient(\n            colors: [\n                Color(red: 0.2, green: 0.5, blue: 0.8),\n                Color(red: 0.4, green: 0.2, blue: 0.9),\n                Color(red: 0.6, green: 0.3, blue: 0.7)\n            ],\n            startPoint: animateGradient ? .topLeading : .bottomLeading,\n            endPoint: animateGradient ? .bottomTrailing : .topTrailing\n        )\n        .ignoresSafeArea()\n        .onAppear {\n            withAnimation(.linear(duration: 3).repeatForever(autoreverses: true)) {\n                animateGradient.toggle()\n            }\n        }\n    }\n}\n```\n\nFor a more subtle color transition:\n\n```swift\nstruct ColorTransitionView: View {\n    @State private var currentColor = Color.blue\n    let colors: [Color] = [.blue, .purple, .pink, .orange]\n    @State private var colorIndex = 0\n    \n    var body: some View {\n        Rectangle()\n            .fill(currentColor)\n            .ignoresSafeArea()\n            .onAppear {\n                Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in\n                    withAnimation(.easeInOut(duration: 1.5)) {\n                        colorIndex = (colorIndex + 1) % colors.count\n                        currentColor = colors[colorIndex]\n                    }\n                }\n            }\n    }\n}\n```"
+            ]
+          },
+          "metadata": {
+            "model_slug": "gpt-4o"
+          }
+        },
+        "parent": "msg-user-2",
+        "children": []
+      }
+    }
+  },
+  {
+    "title": "Python Code Review",
+    "conversation_id": "example-002-code-discussion",
+    "create_time": 1704068000.0,
+    "update_time": 1704068300.0,
+    "current_node": "msg-assistant-3",
+    "default_model_slug": "gpt-4",
+    "mapping": {
+      "root": {
+        "id": "root",
+        "message": null,
+        "parent": null,
+        "children": ["msg-user-3"]
+      },
+      "msg-user-3": {
+        "id": "msg-user-3",
+        "message": {
+          "id": "msg-user-3",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1704068000.0,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Can you review this Python function and suggest improvements?\n\n```python\ndef process_data(data):\n    result = []\n    for item in data:\n        if item > 0:\n            result.append(item * 2)\n    return result\n```"
+            ]
+          }
+        },
+        "parent": "root",
+        "children": ["msg-assistant-3"]
+      },
+      "msg-assistant-3": {
+        "id": "msg-assistant-3",
+        "message": {
+          "id": "msg-assistant-3",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1704068050.0,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "Here are several improvements for your Python function:\n\n## 1. Use List Comprehension\nMore Pythonic and efficient:\n```python\ndef process_data(data):\n    return [item * 2 for item in data if item > 0]\n```\n\n## 2. Add Type Hints\nImproves code clarity and enables better IDE support:\n```python\nfrom typing import List, Union\n\ndef process_data(data: List[Union[int, float]]) -> List[Union[int, float]]:\n    return [item * 2 for item in data if item > 0]\n```\n\n## 3. Add Documentation\n```python\ndef process_data(data: List[Union[int, float]]) -> List[Union[int, float]]:\n    \"\"\"\n    Process a list of numbers by doubling positive values.\n    \n    Args:\n        data: List of numeric values\n        \n    Returns:\n        List containing doubled positive values\n        \n    Examples:\n        >>> process_data([1, -2, 3, 0, 4])\n        [2, 6, 8]\n    \"\"\"\n    return [item * 2 for item in data if item > 0]\n```\n\n## 4. Consider Generator for Large Datasets\nIf dealing with large datasets, use a generator to save memory:\n```python\ndef process_data_lazy(data):\n    \"\"\"Generator version for memory efficiency.\"\"\"\n    return (item * 2 for item in data if item > 0)\n```\n\n## 5. Add Input Validation\n```python\ndef process_data(data: List[Union[int, float]]) -> List[Union[int, float]]:\n    \"\"\"Process a list of numbers by doubling positive values.\"\"\"\n    if not isinstance(data, (list, tuple)):\n        raise TypeError(\"Input must be a list or tuple\")\n    \n    try:\n        return [item * 2 for item in data if item > 0]\n    except TypeError:\n        raise TypeError(\"All items must be numeric\")\n```"
+            ]
+          },
+          "metadata": {
+            "model_slug": "gpt-4"
+          }
+        },
+        "parent": "msg-user-3",
+        "children": []
+      }
+    }
+  },
+  {
+    "title": "Simple Q&A Example",
+    "conversation_id": "example-003-simple-qa",
+    "create_time": 1704069000.0,
+    "update_time": 1704069100.0,
+    "current_node": "msg-assistant-4",
+    "default_model_slug": "gpt-3.5-turbo",
+    "mapping": {
+      "root": {
+        "id": "root",
+        "message": null,
+        "parent": null,
+        "children": ["msg-user-4"]
+      },
+      "msg-user-4": {
+        "id": "msg-user-4",
+        "message": {
+          "id": "msg-user-4",
+          "author": {
+            "role": "user"
+          },
+          "create_time": 1704069000.0,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "What is the capital of France?"
+            ]
+          }
+        },
+        "parent": "root",
+        "children": ["msg-assistant-4"]
+      },
+      "msg-assistant-4": {
+        "id": "msg-assistant-4",
+        "message": {
+          "id": "msg-assistant-4",
+          "author": {
+            "role": "assistant"
+          },
+          "create_time": 1704069020.0,
+          "content": {
+            "content_type": "text",
+            "parts": [
+              "The capital of France is **Paris**. \n\nParis is not only the capital but also the largest city in France. It's known for:\n- The Eiffel Tower\n- The Louvre Museum\n- Notre-Dame Cathedral\n- Its rich history, art, fashion, and cuisine\n\nThe city has been the capital of France since the 12th century and remains one of the world's major cultural and economic centers."
+            ]
+          },
+          "metadata": {
+            "model_slug": "gpt-3.5-turbo"
+          }
+        },
+        "parent": "msg-user-4",
+        "children": []
+      }
+    }
+  }
+]
